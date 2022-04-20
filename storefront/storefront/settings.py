@@ -14,8 +14,7 @@ from pathlib import Path
 import dj_database_url
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -83,17 +82,17 @@ WSGI_APPLICATION = 'storefront.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-    'default':{
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'skincare_api',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': 'localhost',
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+#     'default':{
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'skincare_api',
+#         'USER': '',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
+#     }
 }
 
 db_from_env = dj_database_url.config()
