@@ -16,6 +16,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -29,7 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['localhost', 'polar-oasis-46988.herokuapp.com']
 
 
-# Application definition
+# Application 
 
 INSTALLED_APPS = [
     'corsheaders',
@@ -83,17 +84,17 @@ WSGI_APPLICATION = 'storefront.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+    'default':{
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'skincare_api',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': 'localhost',
     }
-#     'default':{
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'skincare_api',
-#         'USER': '',
-#         'PASSWORD': '',
-#         'HOST': 'localhost',
-#     }
 }
 
 db_from_env = dj_database_url.config(conn_max_age=600)
